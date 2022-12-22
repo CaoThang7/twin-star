@@ -25,6 +25,8 @@ module.exports = {
           "📂common": "./src/common",
           "📂navigation": "./src/navigation",
           "📂utils": "./src/utils",
+          "📂assets": "./src/assets",
+          "📂hooks": "./src/hooks",
         },
       },
     ],

@@ -1,3 +1,7 @@
+export const splashStack = {
+    splash: "SplashScreen",
+}
+
 export const authStack = {
     login: "LoginScreen",
     register: "RegisterScreen",
@@ -14,6 +18,7 @@ export const home = {
 }
 
 export const rootSwitch = {
+    splash: "SplashStack",
     main: "MainStack",
     auth: "AuthStack",
 }
