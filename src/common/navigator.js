@@ -14,6 +14,8 @@ export const mainStack = {
 
 export const home = {
     homeStack: "HomeStack",
+    voucher: "VoucherStack",
+    bookmark: "BookMarkStack",
     profile: "ProfileStack",
 }
 

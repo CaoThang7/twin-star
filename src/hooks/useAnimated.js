@@ -22,7 +22,7 @@ const useAnimated = () => {
 
         setTimeout(() => {
             navigation.navigate(rootSwitch.main)
-        }, 3000);
+        }, 3500);
     }
 
     return { animatedValue, onAnimatedStateChanged }

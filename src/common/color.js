@@ -13,4 +13,5 @@ export default {
     ghostWhite: "#f8f8ff",
     lightGrey: "#d3d3d3",
     orange: "#ffa500",
+    drakGrey:'#606060'
 }
