@@ -1,0 +1,18 @@
+28-01-2023	6:57 AM ------ /v1/auth/registe --- POST --- Not found 
+30-01-2023	6:05 PM ------ /v1/auth/registe --- POST --- Not found 
+30-01-2023	6:27 PM ------ /register --- POST --- This fullname already exists. 
+30-01-2023	6:28 PM ------ /register --- POST --- This email already exists. 
+30-01-2023	6:30 PM ------ /register --- POST --- Password must be at least 6 characters. 
+31-01-2023	5:16 PM ------ /register --- POST --- This fullname already exists. 
+31-01-2023	5:16 PM ------ /register --- POST --- This fullname already exists. 
+31-01-2023	5:21 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	5:24 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	5:24 PM ------ /register --- POST --- This fullname already exists. 
+31-01-2023	5:39 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	5:39 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	5:58 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	6:25 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	6:26 PM ------ /v1/auth/refresh_token --- GET --- Not found 
+31-01-2023	6:59 PM ------ /login --- POST --- This email does not exist. 
+31-01-2023	6:59 PM ------ /login --- POST --- Password is incorrect. 
+31-01-2023	7:03 PM ------ /refresh_token --- POST --- Please login now. 
