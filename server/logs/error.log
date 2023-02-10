@@ -83,3 +83,4 @@
 10-02-2023	12:06 PM ------ /refresh_token --- POST --- This does not exist. 
 10-02-2023	7:41 PM ------ /user/63d8faa4abb82ca91b694e1e --- GET --- User does not exist. 
 10-02-2023	7:49 PM ------ /user/63d8faa4abb82ca91b694e1e --- GET --- User does not exist. 
+11-02-2023	2:01 AM ------ /user --- PATCH --- Update Fail! 
