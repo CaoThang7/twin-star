@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import HomeIcons from 'react-native-vector-icons/FontAwesome';
@@ -12,10 +12,21 @@ import Voucher from '📂screens/voucher/voucher';
 import BookMark from '📂screens/bookmark/bookmark';
 import Profile from '📂screens/profile/profile';
 import Color from "📂common/color"
+import Login from '📂screens/auth/login';
+import { useDispatch, useSelector } from "react-redux"
+import { selectAuthToken } from "📂redux/selector/auth"
+import { refresh_token } from '📂redux/slices/auth'
 
 const Tab = createBottomTabNavigator();
 
 const HomeTabs = () => {
+    const authToken = useSelector(selectAuthToken);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(refresh_token())
+    }, [dispatch])
+
     return (
         <Tab.Navigator
             screenOptions={{
@@ -84,7 +95,7 @@ const HomeTabs = () => {
             />
             <Tab.Screen
                 name={home.profile}
-                component={Profile}
+                component={authToken ? Profile : Login}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Profile',

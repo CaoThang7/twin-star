@@ -8,4 +8,24 @@ const EvilIcons = {
     search: "search",
 }
 
-export default { Feather, EvilIcons }
+const MaterialCommunityIcons = {
+    email: "email",
+    password: "key"
+}
+
+const MaterialIcons = {
+    goback: "arrow-back-ios"
+}
+
+const Entypo = {
+    eye: "eye",
+    eyeoff: "eye-with-line"
+}
+
+export default {
+    Feather,
+    EvilIcons,
+    MaterialCommunityIcons,
+    MaterialIcons,
+    Entypo
+}

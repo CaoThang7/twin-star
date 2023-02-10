@@ -19,6 +19,11 @@ export const home = {
     profile: "ProfileStack",
 }
 
+export const toptabStack = {
+    backupStack: "BackUpStack",
+    reviewStack: "ReviewStack",
+}
+
 export const rootSwitch = {
     splash: "SplashStack",
     main: "MainStack",
