@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT;
 const logEvents = require('./helpers/logEvent');
 const authRouter = require("./src/v1/routes/authRouter");
+const userRouter = require("./src/v1/routes/userRouter");
 
 // dbs init
 require('./src/v1/databases/initMongodb')
@@ -27,6 +28,7 @@ app.use(cookieParser())
 
 // router init
 app.use('/v1/auth', authRouter)
+app.use('/v1', userRouter)
 
 // Error Handling Middleware called
 app.use((req, res, next) => {
