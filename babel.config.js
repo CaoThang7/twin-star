@@ -27,6 +27,8 @@ module.exports = {
           "📂utils": "./src/utils",
           "📂assets": "./src/assets",
           "📂hooks": "./src/hooks",
+          "📂redux": "./src/redux",
+          "📂services": "./src/services",
         },
       },
     ],
