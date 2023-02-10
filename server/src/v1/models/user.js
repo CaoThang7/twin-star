@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: '',
+        default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvts5aHBstDkR8PigS4RmZkbZy78zpZoSuOw&usqp=CAU',
     },
     phone: {
         type: String,
