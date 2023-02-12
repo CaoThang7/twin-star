@@ -1,6 +1,8 @@
 export default {
     aubergine: ['#aa076b', '#61045f'],
     premiumDark: ['#434343', '#000000'],
+    bloodyMary: ['#FF512F', '#DD2476'],
+    lush: ['#a8e063', '#56ab2f'],
     magenta: "#9A0058",
     grey: "#CFCFCF",
     blue: "#6495ed",
@@ -13,5 +15,7 @@ export default {
     ghostWhite: "#f8f8ff",
     lightGrey: "#d3d3d3",
     orange: "#ffa500",
-    drakGrey:'#606060'
+    drakGrey: '#606060',
+    opacityWhite: 'rgba(255, 255, 255, 0.3)',
+    opacityBlack: 'rgba(0, 0, 0, 0.2)',
 }
