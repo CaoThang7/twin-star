@@ -1,26 +1,35 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions } from 'react-native'
 import React from 'react'
 import Color from "📂common/color"
+import ImgUrl from "📂common/imgurl"
 import LinearGradient from 'react-native-linear-gradient';
 import { Avatar } from "react-native-elements"
 import BottomTabView from './components/bottomTabView';
 import { useSelector } from "react-redux"
 import { selectAuth } from "📂redux/selector/auth"
+import { useNavigation } from "@react-navigation/native"
+import { mainStack } from "📂common/navigator"
 
 const Profile = () => {
     const user = useSelector(selectAuth);
-    const avatarEmpty = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvts5aHBstDkR8PigS4RmZkbZy78zpZoSuOw&usqp=CAU"
+    const navigation = useNavigation();
+
+    const gotoSettingProfile = () => {
+        navigation.navigate(mainStack.settingProfile)
+    }
 
     return (
         <LinearGradient colors={Color.premiumDark} style={styles.container}>
             <ScrollView>
                 <View style={styles.boxProfile}>
-                    <TouchableOpacity style={styles.imageProfile}>
+                    <TouchableOpacity
+                        style={styles.imageProfile}
+                        onPress={gotoSettingProfile}>
                         <Avatar
                             size={90}
                             rounded
                             source={{
-                                uri: user ? user.avatar : avatarEmpty,
+                                uri: user ? user.avatar : ImgUrl.avatarEmpty,
                             }}
                         />
                     </TouchableOpacity>

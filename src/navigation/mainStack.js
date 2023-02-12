@@ -2,6 +2,7 @@ import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
 import { mainStack } from "📂common/navigator"
 import homeTabs from "./homeTabs"
+import settingProfile from "📂screens/profile/settingProfile"
 
 const Stack = createStackNavigator()
 
@@ -15,6 +16,11 @@ const MainStack = () => {
                     options={{ headerShown: false }}
                     name={mainStack.homeTab}
                     component={homeTabs}
+                />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name={mainStack.settingProfile}
+                    component={settingProfile}
                 />
             </Stack.Group>
         </Stack.Navigator>

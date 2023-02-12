@@ -9,7 +9,7 @@ export const authStack = {
 
 export const mainStack = {
     homeTab: "HomeTab",
-    edit: "EditScreen"
+    settingProfile: "SettingProfile"
 }
 
 export const home = {
