@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "997693489181",
+    "project_id": "twinstar-b9d54",
+    "storage_bucket": "twinstar-b9d54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997693489181:android:7dd76cbcefd158781dc6f4",
+        "android_client_info": {
+          "package_name": "com.twinstar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997693489181-4tolc6pl2025756dj0cvog5uatqrcai2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ7cHcTbTi3cTIRq9q5LP8GLl7gKazkBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997693489181-4tolc6pl2025756dj0cvog5uatqrcai2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

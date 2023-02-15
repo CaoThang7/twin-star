@@ -1,15 +1,28 @@
 import { StyleSheet, View, ScrollView, ImageBackground, Dimensions } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ImgUrl from "📂common/imgurl"
 import HeaderTop from './components/headerTop'
 import FormUpdate from './components/formUpdate'
-import { useSelector } from "react-redux"
-import { selectAuth } from "📂redux/selector/auth"
+import { useDispatch, useSelector } from "react-redux"
+import { selectAuth, selectAuthToken } from "📂redux/selector/auth"
+import { selectProfileUser } from "📂redux/selector/user"
 import { useNavigation } from "@react-navigation/native"
+import { getUserInfo } from '📂redux/slices/user'
 
 const SettingProfile = () => {
-  const userProfile = useSelector(selectAuth);
+  const userProfile = useSelector(selectProfileUser);
+  const dataAuth = useSelector(selectAuth);
+  const authToken = useSelector(selectAuthToken);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const id = dataAuth ? dataAuth._id : "";
+
+  useEffect(() => {
+    dispatch(getUserInfo({ id, authToken }))
+      .unwrap()
+      .then((data) => {
+      })
+  }, [dispatch])
 
   return (
     <ScrollView style={styles.container}>
