@@ -2,17 +2,30 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import userService from '📂services/user'
 
 const initialState = {
-    user: null,
+    user: [],
     msg: "msg"
 }
 
 export const getUserInfo = createAsyncThunk(
     "user/profile",
-    async (id, authToken) => {
+    async ({ id, authToken }) => {
         try {
-            const dataUser = await userService.getProfile(id, authToken)
+            const dataUser = await userService.getProfile({ id, authToken })
             return {
                 user: dataUser.user,
+            }
+        } catch (error) {
+            return { msg: error }
+        }
+    },
+)
+
+export const updateProfile = createAsyncThunk(
+    "user/updateProfile",
+    async ({ data, authToken }) => {
+        try {
+            const dataUser = await userService.updateProfile({ data, authToken })
+            return {
                 msg: dataUser.msg
             }
         } catch (error) {
@@ -30,10 +43,15 @@ export const userSlice = createSlice({
         builder
             .addCase(getUserInfo.fulfilled, (state, action) => {
                 state.user = action.payload.user
-                state.msg = action.payload.msg
             })
             .addCase(getUserInfo.rejected, (state) => {
-                state.user = null
+                state.user = []
+            })
+            .addCase(updateProfile.fulfilled, (state, action) => {
+                state.msg = action.payload.msg
+            })
+            .addCase(updateProfile.rejected, (state) => {
+                state.msg = null
             })
     }
 })
