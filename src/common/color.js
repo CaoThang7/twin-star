@@ -16,6 +16,6 @@ export default {
     lightGrey: "#d3d3d3",
     orange: "#ffa500",
     drakGrey: '#606060',
-    opacityWhite: 'rgba(255, 255, 255, 0.3)',
+    opacityWhite: 'rgba(255, 255, 255, 0.2)',
     opacityBlack: 'rgba(0, 0, 0, 0.2)',
 }
