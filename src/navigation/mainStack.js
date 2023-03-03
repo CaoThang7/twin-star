@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { mainStack } from "📂common/navigator"
 import homeTabs from "./homeTabs"
 import settingProfile from "📂screens/profile/settingProfile"
+import productDetail from "📂screens/home/productDetail"
 
 const Stack = createStackNavigator()
 
@@ -21,6 +22,11 @@ const MainStack = () => {
                     options={{ headerShown: false }}
                     name={mainStack.settingProfile}
                     component={settingProfile}
+                />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name={mainStack.productDetail}
+                    component={productDetail}
                 />
             </Stack.Group>
         </Stack.Navigator>
