@@ -1,10 +1,24 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Color from "📂common/color"
+import { useNavigation } from "@react-navigation/native"
+import { mainStack } from "📂common/navigator"
+import { useDispatch } from "react-redux"
+import { visitProducts } from '📂redux/slices/product'
 
 const ProductItemTrend = ({ item }) => {
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
+
+    const gotoProductDetail = () => {
+        dispatch(visitProducts(item._id))
+        navigation.navigate(mainStack.productDetail, {
+            productId: item._id,
+        })
+    }
+
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={gotoProductDetail}>
             <View style={styles.boxItemTrend}>
                 <Image
                     source={{ uri: item.image }}

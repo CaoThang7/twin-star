@@ -1,11 +1,24 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Color from "📂common/color"
-import EyeIcon from 'react-native-vector-icons/Entypo';
+import { useNavigation } from "@react-navigation/native"
+import { mainStack } from "📂common/navigator"
+import { useDispatch } from "react-redux"
+import { visitProducts } from '📂redux/slices/product'
 
 const ProductItemNew = ({ item }) => {
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
+
+    const gotoProductDetail = () => {
+        dispatch(visitProducts(item._id))
+        navigation.navigate(mainStack.productDetail, {
+            productId: item._id,
+        })
+    }
+
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={gotoProductDetail}>
             <View style={styles.boxItemTrend}>
                 <Image
                     source={{ uri: item.image }}
@@ -15,12 +28,11 @@ const ProductItemNew = ({ item }) => {
                     <Text style={styles.txtName}>{item.name}</Text>
                     <Text style={styles.txtTitle}>{item.title}</Text>
                     <View style={styles.itemViewer}>
-                        <EyeIcon
-                            name={"eye"}
-                            color={Color.white}
-                            size={20}
-                        />
-                        <Text style={styles.txtViewer}>{item.viewer}</Text>
+                        <Text
+                            numberOfLines={1}
+                            style={styles.txtViewer}>
+                            {item.description}
+                        </Text>
                     </View>
                 </View>
             </View>
@@ -46,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     itemViewer: {
-        flexDirection: 'row',
+        width: 100
     },
     txtItem: {
         justifyContent: 'center',
@@ -68,6 +80,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: Color.white,
         opacity: 0.8,
-        marginLeft: 5
+        marginLeft: 2
     }
 })

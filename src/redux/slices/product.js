@@ -3,7 +3,8 @@ import productService from '📂services/product'
 
 const initialState = {
     data: [],
-    loading: false
+    loading: false,
+    item: {},
 }
 
 export const getProduct = createAsyncThunk(
@@ -13,6 +14,34 @@ export const getProduct = createAsyncThunk(
             const dataProduct = await productService.getProduct()
             return {
                 data: dataProduct.productList
+            }
+        } catch (error) {
+            return error.message
+        }
+    },
+)
+
+export const getProductDetails = createAsyncThunk(
+    "product/getProductDetails",
+    async (id) => {
+        try {
+            const dataProductId = await productService.getProductId(id)
+            return {
+                item: dataProductId
+            }
+        } catch (error) {
+            return error.message
+        }
+    },
+)
+
+export const visitProducts = createAsyncThunk(
+    "product/visitProducts",
+    async (id) => {
+        try {
+            const data = await productService.visitProduct(id)
+            return {
+                item: data
             }
         } catch (error) {
             return error.message
@@ -36,6 +65,22 @@ export const productSlice = createSlice({
             })
             .addCase(getProduct.rejected, (state) => {
                 state.data = null
+                state.loading = false
+            })
+            .addCase(getProductDetails.fulfilled, (state, action) => {
+                state.item = action.payload.item
+                state.loading = false
+            })
+            .addCase(getProductDetails.rejected, (state) => {
+                state.item = null
+                state.loading = false
+            })
+            .addCase(visitProducts.fulfilled, (state, action) => {
+                state.item = action.payload.item
+                state.loading = false
+            })
+            .addCase(visitProducts.rejected, (state) => {
+                state.item = null
                 state.loading = false
             })
     }
