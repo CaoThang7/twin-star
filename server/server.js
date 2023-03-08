@@ -13,6 +13,7 @@ const userRouter = require("./src/v1/routes/userRouter");
 const productRouter = require("./src/v1/routes/productRouter");
 const categoryRouter = require("./src/v1/routes/categoryRouter");
 const reviewRouter = require("./src/v1/routes/reviewRouter");
+const markRouter = require("./src/v1/routes/markRouter");
 
 // dbs init
 require('./src/v1/databases/initMongodb')
@@ -35,6 +36,7 @@ app.use('/v1', userRouter)
 app.use('/v1', productRouter)
 app.use('/v1', categoryRouter)
 app.use('/v1', reviewRouter)
+app.use('/v1', markRouter)
 
 // Error Handling Middleware called
 app.use((req, res, next) => {

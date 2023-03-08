@@ -70,7 +70,10 @@ const reviewCtrl = {
     },
     getAllReview: async (req, res) => {
         try {
-            const reviewList = await REVIEW.find();
+            const reviewList = await REVIEW.find().populate([
+                "product_id",
+                "user_id",
+            ]);
             res.json({ reviewList })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
