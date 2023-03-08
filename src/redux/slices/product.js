@@ -5,6 +5,7 @@ const initialState = {
     data: [],
     loading: false,
     item: {},
+    searchProduct: []
 }
 
 export const getProduct = createAsyncThunk(
@@ -49,6 +50,20 @@ export const visitProducts = createAsyncThunk(
     },
 )
 
+export const getProductSearchs = createAsyncThunk(
+    "product/getProductSearchs",
+    async (key) => {
+        try {
+            const dataProductSearch = await productService.getProductSearch(key)
+            return {
+                searchProduct: dataProductSearch
+            }
+        } catch (error) {
+            return error.message
+        }
+    },
+)
+
 export const productSlice = createSlice({
     name: "product",
     initialState, // gia tri ban dau
@@ -81,6 +96,17 @@ export const productSlice = createSlice({
             })
             .addCase(visitProducts.rejected, (state) => {
                 state.item = null
+                state.loading = false
+            })
+            .addCase(getProductSearchs.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(getProductSearchs.fulfilled, (state, action) => {
+                state.searchProduct = action.payload.searchProduct
+                state.loading = false
+            })
+            .addCase(getProductSearchs.rejected, (state) => {
+                state.searchProduct = null
                 state.loading = false
             })
     }

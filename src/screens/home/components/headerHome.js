@@ -4,9 +4,14 @@ import Color from "📂common/color"
 import { Avatar } from "react-native-elements"
 import ImgUrl from "📂common/imgurl"
 import RightIcon from 'react-native-vector-icons/AntDesign';
+import { mainStack } from "📂common/navigator"
 
-const HeaderHome = ({ profile }) => {
+const HeaderHome = ({ profile, navigation }) => {
     const nameApp = require('📂assets/logo/nameApp.png');
+
+    const gotoSearchScreen = () => {
+        navigation.navigate(mainStack.searchScreen)
+    }
 
     return (
         <View style={styles.container}>
@@ -25,7 +30,7 @@ const HeaderHome = ({ profile }) => {
                     style={styles.imageNameApp}
                     source={nameApp} />
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={gotoSearchScreen}>
                 <RightIcon
                     name={"search1"}
                     color={Color.white}
