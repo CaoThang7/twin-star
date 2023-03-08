@@ -75,7 +75,22 @@ const productCtrl = {
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
-    }
+    },
+    searchProduct: async (req, res) => {
+        try {
+            let products = await PRODUCT.find(
+                {
+                    "$or": [
+                        { name: { $regex: req.params.key } },
+                        { title: { $regex: req.params.key } }
+                    ]
+                }
+            )
+            res.json({ products })
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
 }
 
 module.exports = productCtrl

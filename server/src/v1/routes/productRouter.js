@@ -9,4 +9,6 @@ router.get('/product/:id', productCtrl.getProductId)
 
 router.patch('/product/visitCounter/:id', productCtrl.visitCounter)
 
+router.get('/product/search/:key', productCtrl.searchProduct)
+
 module.exports = router
