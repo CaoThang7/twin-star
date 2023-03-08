@@ -15,9 +15,16 @@ const visitProduct = async (id) => {
     return res.data
 }
 
+const getProductSearch = async (key) => {
+    const res = await getDataAPI(`product/search/${key}`)
+    return res.data
+}
+
+
 const productService = {
     getProduct,
     getProductId,
-    visitProduct
+    visitProduct,
+    getProductSearch
 }
 export default productService;

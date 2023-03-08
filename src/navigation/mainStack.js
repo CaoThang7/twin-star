@@ -4,6 +4,7 @@ import { mainStack } from "📂common/navigator"
 import homeTabs from "./homeTabs"
 import settingProfile from "📂screens/profile/settingProfile"
 import productDetail from "📂screens/home/productDetail"
+import searchScreen from "📂screens/home/search"
 
 const Stack = createStackNavigator()
 
@@ -27,6 +28,11 @@ const MainStack = () => {
                     options={{ headerShown: false }}
                     name={mainStack.productDetail}
                     component={productDetail}
+                />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name={mainStack.searchScreen}
+                    component={searchScreen}
                 />
             </Stack.Group>
         </Stack.Navigator>
