@@ -11,7 +11,7 @@ import TextInputCustom from '📂components/text_input'
 import storage from '@react-native-firebase/storage'
 import { logout } from '📂redux/slices/auth'
 import { useDispatch, useSelector } from "react-redux"
-import { updateProfile } from '📂redux/slices/user'
+import { updateProfile, clearProfile } from '📂redux/slices/user'
 import { selectAuthToken } from "📂redux/selector/auth"
 import { selectLoading } from "📂redux/selector/loading"
 import { showLoading, hideLoading } from "📂redux/slices/loading"
@@ -97,6 +97,7 @@ const FormUpdate = ({ userProfile, navigation }) => {
                     navigation.goBack();
                 }
             })
+        dispatch(clearProfile())
     }
 
     return (

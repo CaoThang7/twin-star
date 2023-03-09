@@ -1,4 +1,4 @@
-import { getDataAPI, patchDataAPI } from "📂utils/fetchData"
+import { getDataAPI, postDataAPI } from "📂utils/fetchData"
 
 const getProfile = async ({ id, authToken }) => {
     const res = await getDataAPI(`user/${id}`, authToken)
@@ -6,7 +6,7 @@ const getProfile = async ({ id, authToken }) => {
 }
 
 const updateProfile = async ({ data, authToken }) => {
-    const res = await patchDataAPI(`user/update`, data, authToken)
+    const res = await postDataAPI(`user/update`, data, authToken)
     return res.data
 }
 

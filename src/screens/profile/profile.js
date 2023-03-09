@@ -18,7 +18,7 @@ const Profile = () => {
     const authToken = useSelector(selectAuthToken);
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const id = dataAuth._id;
+    const id = dataAuth ? dataAuth._id : "";
 
     useEffect(() => {
         dispatch(getUserInfo({ id, authToken }))
