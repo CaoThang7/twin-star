@@ -48,10 +48,6 @@ const markCtrl = {
                 "product_id",
                 "user_id",
             ]);
-            if (marks == "") {
-                logEvents(`${req.url} --- ${req.method} --- ${"You have not saved any products yet!"}`)
-                res.json({ msg: "You have not saved any products yet!", })
-            }
             res.json({ marks })
         } catch (err) {
             return res.status(500).json({ msg: err.message })

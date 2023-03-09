@@ -5334,6 +5334,11 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.6"
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6064,6 +6069,11 @@ react-native-size-matters@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz#24d0cfc335a2c730f6d58bd7b43ea5a41be4b49f"
   integrity sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw==
+
+react-native-stock-star-rating@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-stock-star-rating/-/react-native-stock-star-rating-1.0.6.tgz#b28fb5d61a9e64a7581d73d307055fb86c32836c"
+  integrity sha512-YQMGVYX03kq9cW0Of0y+fad9A1RpyM/ZOKMb2o15DfITcceLlrz5x83B6kBOl6SxM/YzdXpMvphWNZehilJ46g==
 
 react-native-tab-view@^3.3.4:
   version "3.3.4"

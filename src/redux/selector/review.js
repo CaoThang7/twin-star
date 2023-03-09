@@ -1,0 +1,1 @@
+export const selectReviewProduct = (state) => state.review.data

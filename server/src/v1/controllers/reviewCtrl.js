@@ -79,6 +79,17 @@ const reviewCtrl = {
             return res.status(500).json({ msg: err.message })
         }
     },
+    getReviewProductId: async (req, res) => {
+        try {
+            const reviews = await REVIEW.find({ product_id: req.params.product_id }).populate([
+                "product_id",
+                "user_id",
+            ]);
+            res.json({ reviews })
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
 }
 
 module.exports = reviewCtrl

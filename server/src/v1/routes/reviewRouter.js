@@ -10,4 +10,6 @@ router.delete('/review/deleteReview/:id', auth, reviewCtrl.deleteReview)
 
 router.get('/review/getAllReview', reviewCtrl.getAllReview)
 
+router.get('/review/getReviewProductId/:product_id', reviewCtrl.getReviewProductId)
+
 module.exports = router
