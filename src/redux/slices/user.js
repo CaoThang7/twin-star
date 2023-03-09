@@ -26,10 +26,24 @@ export const updateProfile = createAsyncThunk(
         try {
             const dataUser = await userService.updateProfile({ data, authToken })
             return {
-                msg: dataUser.msg
+                msg: dataUser.msg,
+                user: dataUser.data
             }
         } catch (error) {
             return { msg: error.response.data.msg }
+        }
+    },
+)
+
+export const clearProfile = createAsyncThunk(
+    "user/clearProfile",
+    async () => {
+        try {
+            return {
+                user: []
+            }
+        } catch (error) {
+            return error.message
         }
     },
 )
@@ -48,10 +62,18 @@ export const userSlice = createSlice({
                 state.user = []
             })
             .addCase(updateProfile.fulfilled, (state, action) => {
+                state.user = action.payload.user
                 state.msg = action.payload.msg
             })
             .addCase(updateProfile.rejected, (state) => {
+                state.user = []
                 state.msg = null
+            })
+            .addCase(clearProfile.fulfilled, (state, action) => {
+                state.user = []
+            })
+            .addCase(clearProfile.rejected, (state) => {
+                state.user = []
             })
     }
 })

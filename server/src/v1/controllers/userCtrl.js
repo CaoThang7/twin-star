@@ -17,11 +17,24 @@ const userCtrl = {
     updateUser: async (req, res) => {
         try {
             const { user_id, fullname, avatar, phone } = req.body
-            const user = await USER.findByIdAndUpdate(user_id, {
-                fullname, avatar, phone
-            });
+
+            const user = await USER.findByIdAndUpdate(
+                user_id,
+                {
+                    fullname: fullname,
+                    avatar: avatar,
+                    phone: phone
+                },
+                { new: true }
+            );
+
             if (user) {
-                res.json({ msg: "Update Success!" })
+                res.json({
+                    msg: "Update Success!",
+                    data: {
+                        ...user._doc
+                    }
+                })
             } else {
                 logEvents(`${req.url} --- ${req.method} --- ${"Update Fail!"}`)
                 res.json({ msg: "Update Fail!" })
