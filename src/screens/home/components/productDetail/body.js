@@ -4,8 +4,10 @@ import Color from "📂common/color"
 import BookMarkIcon from 'react-native-vector-icons/FontAwesome5';
 import ViewIcon from 'react-native-vector-icons/Entypo';
 import ButtonCustom from '📂components/button'
+import FlatListCustom from '📂components/flatlist'
+import ReviewProductItem from './reviewProductItem';
 
-const BodyProductDetail = ({ productDetail }) => {
+const BodyProductDetail = ({ productDetail, reviewProductId }) => {
     return (
         <View style={styles.container}>
             <View style={styles.welcomeTop}>
@@ -35,9 +37,22 @@ const BodyProductDetail = ({ productDetail }) => {
             </View>
             <View style={styles.boxReview}>
                 <Text style={styles.txtIntroduction}>Reviews</Text>
-                <View style={styles.ctnNoReview}>
-                    <Text style={styles.txtNoReview}>There are no reviews yet</Text>
-                </View>
+                {reviewProductId == "" ? (
+                    <View style={styles.ctnNoReview}>
+                        <Text style={styles.txtNoReview}>There are no reviews yet</Text>
+                    </View>
+                ) : (
+                    <View style={styles.reviewList}>
+                        <FlatListCustom
+                            scrollIndicator={false}
+                            data={reviewProductId}
+                            keyExtractor={(item) => item._id}
+                            decelerationRate={0}
+                            bounces={false}
+                            renderItem={({ item }) => <ReviewProductItem item={item} />}
+                        />
+                    </View>
+                )}
             </View>
             <ButtonCustom
                 color={Color.aubergine}
@@ -117,6 +132,9 @@ const styles = StyleSheet.create({
         color: Color.white,
         opacity: 0.3,
         marginTop: 10
+    },
+    reviewList: {
+        marginTop: 5,
     },
     btnReview: { marginTop: 20 },
 })
