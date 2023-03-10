@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native"
 import { ScrollView } from 'react-native-virtualized-view';
 import { getReviewByProductId } from '📂redux/slices/review'
 import { selectReviewProduct } from "📂redux/selector/review"
+import { selectAuth } from "📂redux/selector/auth"
 
 const ProductDetail = () => {
     const route = useRoute()
@@ -21,6 +22,7 @@ const ProductDetail = () => {
     const navigation = useNavigation();
     const productDetail = useSelector(selectProductId);
     const reviewProductId = useSelector(selectReviewProduct)
+    const userAuth = useSelector(selectAuth);
 
     useEffect(() => {
         dispatch(getProductDetails(productId))
@@ -35,6 +37,8 @@ const ProductDetail = () => {
                 <BodyProductDetail
                     productDetail={productDetail}
                     reviewProductId={reviewProductId}
+                    userAuth={userAuth}
+                    navigation={navigation}
                 />
             </ScrollView>
         </LinearGradient>

@@ -4,6 +4,8 @@ import reviewService from '📂services/review'
 const initialState = {
     data: [],
     loading: false,
+    review: {},
+    msg: ""
 }
 
 export const getReviewByProductId = createAsyncThunk(
@@ -13,6 +15,21 @@ export const getReviewByProductId = createAsyncThunk(
             const dataReviewProduct = await reviewService.getReviewProductId(product_id)
             return {
                 data: dataReviewProduct.reviews
+            }
+        } catch (error) {
+            return error.message
+        }
+    },
+)
+
+export const createReviewProduct = createAsyncThunk(
+    "review/createReviewProduct",
+    async ({ data, authToken }) => {
+        try {
+            const dataReview = await reviewService.createReview({ data, authToken })
+            return {
+                review: dataReview.data,
+                msg: dataReview.msg
             }
         } catch (error) {
             return error.message
@@ -37,6 +54,14 @@ export const reviewSlice = createSlice({
             .addCase(getReviewByProductId.rejected, (state) => {
                 state.data = []
                 state.loading = false
+            })
+            .addCase(createReviewProduct.fulfilled, (state, action) => {
+                state.review = action.payload.data
+                state.msg = action.payload.msg
+            })
+            .addCase(createReviewProduct.rejected, (state) => {
+                state.review = null
+                state.msg = null
             })
     }
 })

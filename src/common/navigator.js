@@ -11,7 +11,8 @@ export const mainStack = {
     homeTab: "HomeTab",
     settingProfile: "SettingProfile",
     productDetail: "ProductDetail",
-    searchScreen: "SearchScreen"
+    searchScreen: "SearchScreen",
+    reviewScreen: "ReviewScreen"
 }
 
 export const home = {

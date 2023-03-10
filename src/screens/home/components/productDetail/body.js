@@ -1,13 +1,37 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Color from "📂common/color"
 import BookMarkIcon from 'react-native-vector-icons/FontAwesome5';
 import ViewIcon from 'react-native-vector-icons/Entypo';
 import ButtonCustom from '📂components/button'
 import FlatListCustom from '📂components/flatlist'
 import ReviewProductItem from './reviewProductItem';
+import DialogCustom from '📂components/dialog'
+import { mainStack } from "📂common/navigator"
 
-const BodyProductDetail = ({ productDetail, reviewProductId }) => {
+const BodyProductDetail = ({
+    productDetail,
+    reviewProductId,
+    userAuth,
+    navigation
+}) => {
+    const [isDialog, setIsDialog] = useState(false);
+
+    const toggleDialog = () => {
+        setIsDialog(!isDialog)
+    }
+
+    const gotoReviewScreen = () => {
+        if (userAuth) {
+            navigation.navigate(mainStack.reviewScreen, {
+                productDetail: productDetail,
+                reviewProductId: reviewProductId
+            })
+        } else {
+            toggleDialog()
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.welcomeTop}>
@@ -58,7 +82,15 @@ const BodyProductDetail = ({ productDetail, reviewProductId }) => {
                 color={Color.aubergine}
                 style={styles.btnReview}
                 title={"Review now"}
-                onPress={() => { }}
+                onPress={gotoReviewScreen}
+            />
+            <DialogCustom
+                isVisible={isDialog}
+                onBackdropPress={toggleDialog}
+                colorTitle={Color.red}
+                colorBtn={Color.black}
+                title={"Please login now"}
+                txtBtn={"close"}
             />
         </View>
     )
