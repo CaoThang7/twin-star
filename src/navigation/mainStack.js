@@ -5,6 +5,7 @@ import homeTabs from "./homeTabs"
 import settingProfile from "📂screens/profile/settingProfile"
 import productDetail from "📂screens/home/productDetail"
 import searchScreen from "📂screens/home/search"
+import reviewScreen from "📂screens/review/review"
 
 const Stack = createStackNavigator()
 
@@ -33,6 +34,11 @@ const MainStack = () => {
                     options={{ headerShown: false }}
                     name={mainStack.searchScreen}
                     component={searchScreen}
+                />
+                <Stack.Screen
+                    options={{ headerShown: false }}
+                    name={mainStack.reviewScreen}
+                    component={reviewScreen}
                 />
             </Stack.Group>
         </Stack.Navigator>
