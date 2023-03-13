@@ -5,11 +5,6 @@ const markCtrl = {
     createMark: async (req, res) => {
         try {
             const { user_id, product_id } = req.body
-            const user_productId = await MARK.findOne({ product_id })
-
-            if (user_productId) {
-                return res.status(400).json({ msg: "product has been saved" })
-            }
 
             const newMark = new MARK({
                 user_id,
