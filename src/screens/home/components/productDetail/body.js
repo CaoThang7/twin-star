@@ -39,8 +39,8 @@ const BodyProductDetail = ({
             text1: text1,
             autoHide: true,
             visibilityTime: 2000,
-            position: 'bottom',
-            bottomOffset: 50,
+            position: 'top',
+            topOffset: 100,
         })
     }
 
