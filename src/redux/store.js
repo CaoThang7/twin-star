@@ -4,6 +4,7 @@ import loadingSlice from "./slices/loading"
 import userSlice from "./slices/user"
 import productSlice from "./slices/product"
 import reviewSlice from "./slices/review"
+import markSlice from "./slices/mark"
 
 export default configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export default configureStore({
         loading: loadingSlice,
         user: userSlice,
         product: productSlice,
-        review: reviewSlice
+        review: reviewSlice,
+        mark: markSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

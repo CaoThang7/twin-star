@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
+import MarkBtn from './markBtn';
 import Color from "📂common/color"
-import BookMarkIcon from 'react-native-vector-icons/FontAwesome5';
 import ViewIcon from 'react-native-vector-icons/Entypo';
 import ButtonCustom from '📂components/button'
 import FlatListCustom from '📂components/flatlist'
 import ReviewProductItem from './reviewProductItem';
 import DialogCustom from '📂components/dialog'
+import Toast from 'react-native-toast-message';
 import { mainStack } from "📂common/navigator"
 
 const BodyProductDetail = ({
@@ -32,6 +33,17 @@ const BodyProductDetail = ({
         }
     }
 
+    const showMarkProductSuccess = (text1) => {
+        Toast.show({
+            type: "success",
+            text1: text1,
+            autoHide: true,
+            visibilityTime: 2000,
+            position: 'bottom',
+            bottomOffset: 50,
+        })
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.welcomeTop}>
@@ -47,13 +59,12 @@ const BodyProductDetail = ({
                         <Text style={styles.txtViewer}>{productDetail ? productDetail.viewer : ""}</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.btnSave}>
-                    <BookMarkIcon
-                        name={"bookmark"}
-                        color={Color.white}
-                        size={25}
-                    />
-                </TouchableOpacity>
+                <MarkBtn
+                    userAuth={userAuth}
+                    productDetail={productDetail}
+                    toggleDialog={toggleDialog}
+                    showMarkProductSuccess={showMarkProductSuccess}
+                />
             </View>
             <View style={styles.descriptionStyle}>
                 <Text style={styles.txtIntroduction}>Introduction</Text>
@@ -92,6 +103,7 @@ const BodyProductDetail = ({
                 title={"Please login now"}
                 txtBtn={"close"}
             />
+            <Toast />
         </View>
     )
 }
@@ -144,13 +156,6 @@ const styles = StyleSheet.create({
         color: Color.white,
         opacity: 0.3,
         marginTop: 3
-    },
-    btnSave: {
-        backgroundColor: Color.opacityWhite,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 10,
-        paddingHorizontal: 20,
     },
     boxReview: {
         marginTop: 15,

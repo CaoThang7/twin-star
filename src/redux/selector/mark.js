@@ -1,0 +1,1 @@
+export const selectMarkByUserId = (state) => state.mark.data
