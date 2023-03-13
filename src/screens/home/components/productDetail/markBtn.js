@@ -4,11 +4,13 @@ import Color from "📂common/color"
 import BookMarkIcon from 'react-native-vector-icons/Ionicons';
 import { useDispatch, useSelector } from "react-redux"
 import { selectAuthToken } from "📂redux/selector/auth"
+import { selectMarkByUserId } from "📂redux/selector/mark"
 import { createMarkProduct, getMarkByUserId, deleteMarkById } from '📂redux/slices/mark'
 
 const MarkBtn = ({ userAuth, productDetail, toggleDialog, showMarkProductSuccess }) => {
     const [isChecked, setIsChecked] = useState(false);
     const authToken = useSelector(selectAuthToken);
+    const dataMark = useSelector(selectMarkByUserId);
     const userId = userAuth ? userAuth._id : "";
     const dispatch = useDispatch();
 
