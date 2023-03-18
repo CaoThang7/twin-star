@@ -60,7 +60,7 @@ export const markSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(createMarkProduct.fulfilled, (state, action) => {
-                state.mark = action.payload.data
+                state.mark = action.payload.mark
                 state.msg = action.payload.msg
             })
             .addCase(createMarkProduct.rejected, (state) => {
