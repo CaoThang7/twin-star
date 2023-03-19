@@ -36,7 +36,7 @@ const MyBackUp = () => {
 
     return (
         <>
-            {myMarkList == "" ? (
+            {userMarkList == "" ? (
                 <View style={styles.containerEmpty}>
                     <Image
                         source={{ uri: urlImgEmpty }}

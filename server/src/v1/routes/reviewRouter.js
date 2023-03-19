@@ -12,4 +12,6 @@ router.get('/review/getAllReview', reviewCtrl.getAllReview)
 
 router.get('/review/getReviewProductId/:product_id', reviewCtrl.getReviewProductId)
 
+router.get('/review/getReviewUserId/:user_id', auth, reviewCtrl.getReviewUserId)
+
 module.exports = router
