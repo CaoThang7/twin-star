@@ -3,6 +3,7 @@ import reviewService from '📂services/review'
 
 const initialState = {
     data: [],
+    dataUserId: [],
     loading: false,
     review: {},
     msg: ""
@@ -37,6 +38,20 @@ export const createReviewProduct = createAsyncThunk(
     },
 )
 
+export const getReviewByUserId = createAsyncThunk(
+    "review/getReviewByUserId",
+    async ({ userId, authToken }) => {
+        try {
+            const dataReviewUser = await reviewService.getReviewUserId({ userId, authToken })
+            return {
+                dataUserId: dataReviewUser.reviews
+            }
+        } catch (error) {
+            return error.message
+        }
+    },
+)
+
 export const reviewSlice = createSlice({
     name: "review",
     initialState, // gia tri ban dau
@@ -62,6 +77,17 @@ export const reviewSlice = createSlice({
             .addCase(createReviewProduct.rejected, (state) => {
                 state.review = null
                 state.msg = null
+            })
+            .addCase(getReviewByUserId.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(getReviewByUserId.fulfilled, (state, action) => {
+                state.dataUserId = action.payload.dataUserId
+                state.loading = false
+            })
+            .addCase(getReviewByUserId.rejected, (state) => {
+                state.dataUserId = []
+                state.loading = false
             })
     }
 })
