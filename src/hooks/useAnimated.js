@@ -16,7 +16,7 @@ const useAnimated = () => {
                 x: 0,
                 y: 0
             },
-            duration: 2000,
+            duration: 3000,
             useNativeDriver: false,
         }).start();
 
