@@ -5,15 +5,15 @@ import HeaderBar from './components/productDetail/headerBar'
 import LinearGradient from 'react-native-linear-gradient';
 import BodyProductDetail from './components/productDetail/body'
 import VideoSection from './components/productDetail/videoSection'
+import { selectAuth } from "📂redux/selector/auth"
 import { useRoute } from "@react-navigation/native"
 import { useDispatch, useSelector } from "react-redux"
-import { getProductDetails } from '📂redux/slices/product'
-import { selectProductId } from "📂redux/selector/product"
 import { useNavigation } from "@react-navigation/native"
-import { ScrollView } from 'react-native-virtualized-view';
-import { getReviewByProductId } from '📂redux/slices/review'
+import { selectProductId } from "📂redux/selector/product"
+import { ScrollView } from 'react-native-virtualized-view'
+import { getReviewByProductId, clearReviewUser } from '📂redux/slices/review'
 import { selectReviewProduct } from "📂redux/selector/review"
-import { selectAuth } from "📂redux/selector/auth"
+import { getProductDetails, clearDetails } from '📂redux/slices/product'
 
 const ProductDetail = () => {
     const route = useRoute()
@@ -27,6 +27,10 @@ const ProductDetail = () => {
     useEffect(() => {
         dispatch(getProductDetails(productId))
         dispatch(getReviewByProductId(productId))
+        return () => {
+            dispatch(clearDetails())
+            dispatch(clearReviewUser())
+        }
     }, [dispatch, productId])
 
     return (

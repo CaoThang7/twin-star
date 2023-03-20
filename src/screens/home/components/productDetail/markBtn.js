@@ -12,6 +12,7 @@ const MarkBtn = ({ userAuth, productDetail, toggleDialog, showMarkProductSuccess
     const authToken = useSelector(selectAuthToken);
     const dataMark = useSelector(selectMarkByUserId);
     const userId = userAuth ? userAuth._id : "";
+    const productId = productDetail ? productDetail : ""
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const MarkBtn = ({ userAuth, productDetail, toggleDialog, showMarkProductSuccess
                 .then((dataMark) => {
                     dataMark.data.filter(function (item) {
                         if (
-                            item.product_id._id == productDetail._id &&
+                            item.product_id._id == productId &&
                             item.user_id._id == userAuth._id
                         ) {
                             setIsChecked(true)
@@ -30,7 +31,7 @@ const MarkBtn = ({ userAuth, productDetail, toggleDialog, showMarkProductSuccess
                     });
                 })
         }
-    }, [dispatch, productDetail._id])
+    }, [dispatch, productId])
 
     const markProduct = () => {
         if (!userAuth) {
@@ -39,7 +40,7 @@ const MarkBtn = ({ userAuth, productDetail, toggleDialog, showMarkProductSuccess
             setIsChecked(true)
             const data = {
                 user_id: userId,
-                product_id: productDetail._id,
+                product_id: productId,
             }
             dispatch(createMarkProduct({ data, authToken }))
                 .unwrap()
@@ -57,7 +58,7 @@ const MarkBtn = ({ userAuth, productDetail, toggleDialog, showMarkProductSuccess
         } else {
             setIsChecked(false)
             for (i = 0; i < dataMark.length; i++) {
-                if (dataMark[i]['product_id']._id == productDetail._id) {
+                if (dataMark[i]['product_id']._id == productId) {
                     const id = dataMark[i]['_id']
                     dispatch(deleteMarkById({ id, authToken }))
                         .unwrap()

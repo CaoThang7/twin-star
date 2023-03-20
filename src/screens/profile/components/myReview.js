@@ -6,7 +6,7 @@ import { visitProducts } from '📂redux/slices/product'
 import { useDispatch, useSelector } from "react-redux"
 import { selectAuth, selectAuthToken } from "📂redux/selector/auth"
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { getReviewByUserId } from '📂redux/slices/review'
+import { getReviewByUserId, clearMyReview } from '📂redux/slices/review'
 import { selectReviewByUserId } from "📂redux/selector/review"
 import { Rating } from 'react-native-stock-star-rating'
 
@@ -24,7 +24,10 @@ const MyReview = () => {
     useFocusEffect(
         useCallback(() => {
             dispatch(getReviewByUserId({ userId, authToken }))
-        }, [dispatch]),
+            return () => {
+                dispatch(clearMyReview())
+            }
+        }, [dispatch, userId]),
     );
 
     const gotoProductDetail = (item) => {
