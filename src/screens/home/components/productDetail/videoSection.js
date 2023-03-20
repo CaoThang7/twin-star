@@ -6,11 +6,12 @@ import YoutubePlayer from "react-native-youtube-iframe";
 
 const VideoSection = ({ productDetail }) => {
     const [playVideo, setPlayVideo] = useState(false)
-
+    const imgEmpty = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQziworbvlic7AHSQtFx32ezenB4DlBApFo9g&usqp=CAU"
+    
     return (
         <View style={styles.containerVideo}>
             <ImageBackground
-                source={{ uri: productDetail ? productDetail.image : "" }}
+                source={{ uri: productDetail ? productDetail.image : imgEmpty }}
                 style={styles.thumbNail}>
                 <TouchableOpacity
                     style={styles.btnPlay}

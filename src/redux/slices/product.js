@@ -68,6 +68,9 @@ export const productSlice = createSlice({
     name: "product",
     initialState, // gia tri ban dau
     reducers: {
+        clearDetails(state) {
+            state.item = null
+        },
     },
     extraReducers: builder => {
         builder
@@ -111,5 +114,7 @@ export const productSlice = createSlice({
             })
     }
 })
+
+export const { clearDetails } = productSlice.actions
 
 export default productSlice.reducer

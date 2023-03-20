@@ -56,6 +56,12 @@ export const reviewSlice = createSlice({
     name: "review",
     initialState, // gia tri ban dau
     reducers: {
+        clearReviewUser(state) {
+            state.data = []
+        },
+        clearMyReview(state) {
+            state.dataUserId = []
+        },
     },
     extraReducers: builder => {
         builder
@@ -91,5 +97,7 @@ export const reviewSlice = createSlice({
             })
     }
 })
+
+export const { clearReviewUser, clearMyReview } = reviewSlice.actions
 
 export default reviewSlice.reducer
